@@ -26,7 +26,7 @@ var html = `
         </div>
         <div onClick="this.select();" disabled type="text" class="textOutput inputDefault-Ciwd-S input-3O04eu" id="outputCreate"><b style="margin-top: 8px;display: block;">Welcome!</b></div>
         <button style="margin-left: 32%; margin-top: 10px;" class="sectionButton fieldButton-14lHvK button-ejjZWC lookFilled-1H2Jvj colorPrimary-2-Lusz sizeSmall-3R2P2p grow-2T4nbg" id="runDelete">Delete All Invites</button>
-        <a><img style="margin-top: 10px; width: 250px;" src="https://cdn.discordapp.com/attachments/1113574795540430969/1113574807611650128/pleasestar.png"></a>
+        <a href="https://github.com/woodendoors7/DiscordFriendInvites"><img style="margin-top: 10px; width: 250px;" src="https://cdn.discordapp.com/attachments/1113574795540430969/1113574807611650128/pleasestar.png"></a>
         </div>`
 
 var css = `#mainWindow {
