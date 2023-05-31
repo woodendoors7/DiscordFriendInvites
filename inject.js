@@ -4,12 +4,6 @@
 */
 
 
-
-
-
-
-
-console.log("started")
 var html = `
     <div id="mainWindow">
         <div id="header">DiscordFriendInvites<br>by woodendoors7<div id="closeBtn" class="closeButton-30b1gR" aria-label="Dismiss" role="button" tabindex="0"><svg aria-hidden="true" role="img" class="closeIcon-3eoP1e" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path></svg></div></div>
@@ -111,10 +105,8 @@ var closeBtn;
 
 async function inject() {
     var doThis = document.createElement("div")
-    console.log("here")
     doThis.innerHTML = html;
     doThis.innerHTML += `\n\n<style>${css}</style>`
-    console.log("Here too")
     document.body.appendChild(doThis)
 
     div = document.getElementById('mainWindow');
@@ -172,7 +164,6 @@ async function createElement() {
     });
 
     let resultParsed = await result.json();
-    console.log(resultParsed)
 
     outputCreate.innerHTML = `<b style="margin-top: 8px;display: block;">https://discord.gg/${resultParsed.code}</b>`
 
@@ -207,7 +198,6 @@ async function fetchInvites(returnTrue) {
         "mode": "cors"
     });
     let resultParsed = await result.json();
-    console.log(resultParsed)
     selectInvite.innerHTML = ``;
 
     if (resultParsed.length == 0) {
@@ -233,7 +223,6 @@ async function checkTheInfo() {
     let value = selectInvite.value;
     outputCreate.innerHTML = `<b style="margin-top: 8px;display: block;">Loading . . .</b>`
     let result = await fetchInvites(true)
-    console.log(result)
     let thing;
     for (let count = 0; count < result.length; count++) {
         if (result[count].code == value) {
@@ -267,7 +256,6 @@ async function deleteInvites() {
         "method": "DELETE",
         "mode": "cors"
     });
-    console.log(result)
 
     selectInvite.innerHTML = ``;
     let choice = document.createElement("option");
@@ -318,3 +306,6 @@ async function uninject() {
     removeEventListener("mouseMove", window)
 
 }
+
+
+console.log("Hello!")
