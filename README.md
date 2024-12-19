@@ -1,7 +1,7 @@
 [<img src="https://woodendoors7.github.io/DiscordFriendInvites/invites.png" href="https://www.youtube.com/watch?v=qIU5jx4gup8">](https://www.youtube.com/watch?v=qIU5jx4gup8)
 
 
-# Create a Discord Friend Invite link | DiscordFriendInvites
+# Create a Discord Friend Invite link with user friendly GUI | DiscordFriendInvites
 ### A simple tool for generating Discord friend invite links that allows you to send friend requests via a link.
 
 <hr></hr>
@@ -23,7 +23,82 @@ As to my knowledge, you cannot change the use or time limit on the invites, nor 
 2. Wait until Discord is **fully** loaded
 3. Copy this code: 
 ```js
-/* DiscordFriendInvites 1.1.1 by woodendoors7 */  var outputCreate,selectInvite,token,div,closeBtn,offsetLeft,offsetTop,html='\n <div id="mainWindow">\n <div id="header"><div id="closeBtn" aria-label="Dismiss" role="button" tabindex="0"><svg aria-hidden="true" role="img" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path></svg></div>DiscordFriendInvites<br>by woodendoors7<br></div>\n <div class="toDisable">\n <div class="dividing">\n <p class="sectionTitle">\n Create Invite\n </p>\n <button class="sectionButton" id="runCreate">Do It</button>\n </div>\n \n <div class="dividing">\n <p class="sectionTitle">\n View Invite\n </p>\n <select name="Select Invite" id="selectInvite">\n \n </select>\n \n <button class="sectionButton" id="runInfo">View Info</button>\n </div>\n </div>\n <div onClick="this.select();" disabled type="text" class="textOutput" id="outputCreate"><b style="margin-top: 5px; margin-bottom:5px; display: block;">Welcome!</b></div>\n <div class="toDisable" id="reappear">\n <button style="margin-left: 32%; margin-top: 10px;" class="sectionButton" id="runDelete">Delete All Invites</button>\n </div>\n <a href="https://github.com/woodendoors7/DiscordFriendInvites" target="_blank"><img style="margin-top: 10px; width: 250px;" src="https://images-ext-1.discordapp.net/external/2ISttgvfeo5oa4XaRdSTZJoo6F1Z3UqpRFiWCugQQJs/https/papers.floppa.hair/mcstatuspinger/pleasestar.png"></a>\n </div>',css="\n #mainWindow {\n position: absolute;\n z-index: 9;\n background-color: #2F3136;\n border: 1px solid #3f4147;\n color: white;\n text-align: center;\n height: 270px;\n width: 400px;\n z-index: 1000;\n border-radius: 12px;\n font-family: var(--font-primary);\n }\n\n #reappear{\n display: none;\n }\n\n #closeBtn{\n width: 30px;\n cursor: pointer !important;\n float:right;\n }\n\n .toDisable{\n opacity:0.4;\n pointer-events: none;\n }\n\n #header {\n padding: 10px;\n cursor: move;\n z-index: 10;\n background-color: #5865f2;\n color: #ffe8e9;\n user-select: none;\n font-weight: bold;\n border-top-left-radius:12px;\n border-top-right-radius: 12px;\n\n }\n \n .dividing {\n background-color: #2F3136;\n width: 100%;\n height: 50px;\n text-align: left;\n vertical-align: middle;\n white-space: nowrap;\n line-height: 50px;\n }\n \n .sectionTitle {\n vertical-align: middle;\n margin: 0px;\n font-size: 18px;\n margin-left: 15px;\n }\n \n .sectionButton {\n vertical-align: middle;\n margin-top: auto;\n margin-bottom: auto;\n position: relative;\n display: flex;\n justify-content: center;\n align-items: center;\n box-sizing: border-box;\n background: none;\n border: none;\n border-radius: 3px;\n font-size: 14px;\n font-weight: 500;\n line-height: 16px;\n padding: 2px 16px;\n -webkit-user-select: none;\n -moz-user-select: none;\n user-select: none;\n transition: background-color 170ms ease,color 170ms ease;\n color: var(--white-500);\n background-color: var(--button-secondary-background);\n width: var(--custom-button-button-sm-width);\n height: var(--custom-button-button-sm-height);\n min-width: var(--custom-button-button-sm-width);\n min-height: var(--custom-button-button-sm-height);\n width: auto !important;\n }\n\n .sectionButton:hover{\n background-color: var(--button-secondary-background-hover);\n color: var(--white-500);\n }\n\n .dividing * {\n display: inline;\n }\n \n .textOutput {\n max-width: 93%;\n min-height: 16px;\n cursor: text;\n margin-left: 10px;\n user-select: all;\n padding: 3px;\n text-align: center;\n margin-left: 10px;\n background-color: #1e1f22;\n }";async function inject(){let e=document.createElement("div");e.innerHTML=html,e.innerHTML+=`\n\n<style>${css}</style>`,document.body.appendChild(e),(div=document.getElementById("mainWindow")).style.top="100px",div.style.left="100px",window.addEventListener("mousemove",divMove,!0),document.getElementById("header").addEventListener("mousedown",mouseDown,!1),window.addEventListener("mouseup",mouseUp,!1),document.getElementById("runCreate").addEventListener("click",createElement),document.getElementById("runInfo").addEventListener("click",checkTheInfo),document.getElementById("runDelete").addEventListener("click",deleteInvites),closeBtn=document.getElementById("closeBtn"),outputCreate=document.getElementById("outputCreate"),selectInvite=document.getElementById("selectInvite"),expireAfterCreate=document.getElementById("expireAfterCreate"),maxUsesCreate=document.getElementById("maxUsesCreate"),closeBtn.addEventListener("click",uninject),token=await getToken(),console.log("Got token!"),document.querySelector("#reappear").style="display:block;",document.querySelectorAll(".toDisable").forEach((e=>{e.style.opacity="1",e.style.pointerEvents="auto"})),outputCreate.innerHTML='<b style="margin-top: 5px; margin-bottom: 5px; display: block;">Welcome!</b>',fetchInvites(!1)}async function createElement(){outputCreate.innerHTML='<b style="margin-top: 5px;display: block;">Loading . . .</b>';let e=await fetch("https://discord.com/api/v9/users/@me/invites",{credentials:"include",headers:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; rv:103.0) Gecko/20100101 Firefox/103.0",Accept:"*/*","Accept-Language":"en,sk;q=0.8,cs;q=0.5,en-US;q=0.3","Content-Type":"application/json",Authorization:token,"X-Discord-Locale":"en-US","X-Debug-Options":"bugReporterEnabled","Sec-Fetch-Dest":"empty","Sec-Fetch-Mode":"cors","Sec-Fetch-Site":"same-origin","Sec-GPC":"1"},referrer:"https://discord.com/channels/@me",body:"{}",method:"POST",mode:"cors"}),t=await e.json();console.log(t),outputCreate.innerHTML=`<b style="margin-top: 5px; margin-bottom: 5px; display: block;">https://discord.gg/${t.code}</b>`,"No Invites"==selectInvite.firstChild.innerText&&(selectInvite.innerHTML="");let n=document.createElement("option");n.value=t.code,n.innerText=`discord.gg/${t.code}`,selectInvite.appendChild(n)}async function fetchInvites(e){let t=await fetch("https://discord.com/api/v9/users/@me/invites",{credentials:"include",headers:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; rv:103.0) Gecko/20100101 Firefox/103.0",Accept:"*/*","Accept-Language":"en,sk;q=0.8,cs;q=0.5,en-US;q=0.3","Content-Type":"application/json",Authorization:token,"X-Discord-Locale":"en-US","X-Debug-Options":"bugReporterEnabled","Sec-Fetch-Dest":"empty","Sec-Fetch-Mode":"cors","Sec-Fetch-Site":"same-origin","Sec-GPC":"1"},referrer:"https://discord.com/channels/@me",method:"GET",mode:"cors"}),n=await t.json();if(selectInvite.innerHTML="",0==n.length){let e=document.createElement("option");return e.value="none",e.innerText="No Invites",selectInvite.appendChild(e),n}for(let e=0;e<n.length;e++){let t=document.createElement("option");t.value=n[e].code,t.innerText=`discord.gg/${n[e].code}`,selectInvite.appendChild(t)}if(1==e)return n}async function checkTheInfo(){let e=selectInvite.value;outputCreate.innerHTML='<b style="margin-top: 5px; margin-bottom: 5px; display: block;">Loading . . .</b>';let t,n=await fetchInvites(!0);for(let o=0;o<n.length;o++)n[o].code==e&&(t=n[o]);outputCreate.innerHTML=t?`<b>Uses:</b> ${t.uses}/${t.max_uses}, <b>Expires in:</b> ${Math.round(t.max_age/60/60)} hours,</br> <i>https://discord.gg/${t.code}</i>`:"Invite not found!"}async function deleteInvites(){await fetch("https://discord.com/api/v9/users/@me/invites",{credentials:"include",headers:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; rv:103.0) Gecko/20100101 Firefox/103.0",Accept:"*/*","Accept-Language":"en,sk;q=0.8,cs;q=0.5,en-US;q=0.3","Content-Type":"application/json",Authorization:token,"X-Discord-Locale":"en-US","X-Debug-Options":"bugReporterEnabled","Sec-Fetch-Dest":"empty","Sec-Fetch-Mode":"cors","Sec-Fetch-Site":"same-origin","Sec-GPC":"1"},referrer:"https://discord.com/channels/@me",method:"DELETE",mode:"cors"}),selectInvite.innerHTML="";let e=document.createElement("option");e.value="none",e.innerText="No Invites",selectInvite.appendChild(e),outputCreate.innerHTML='<b style="margin-top: 5px; margin-bottom: 5px; display: block;">Invites deleted</b>'}"complete"===document.readyState&&inject();var clicked=!1;async function mouseUp(){clicked=!1}async function mouseDown(e){clicked=!0,offsetLeft=div.offsetLeft-e.clientX,offsetTop=div.offsetTop-e.clientY}function divMove(e){clicked&&(div.style.position="absolute",div.style.top=e.clientY+offsetTop+"px",div.style.left=e.clientX+offsetLeft+"px")}async function getToken(){return new Promise((function(e){outputCreate.innerHTML='<b style="margin-top: 5px; margin-bottom: 5px; display: block;">Getting token...</b><p>Please, switch to a random channel on Discord to obtain token!</p>',outputCreate.innerHTML='<div style="margin-top: 10px; margin-bottom: 10px;"><b>Getting token...</b></br> <i>Please, switch to a random channel on Discord to obtain token!</i></div>',window.__request=window.XMLHttpRequest,window.XMLHttpRequest=class __Interceptor extends window.__request{constructor(){super(...arguments),this._reqHead=this.setRequestHeader,this.setRequestHeader=function(t,n){this._reqHead(t,n),"Authorization"===t&&(window.XMLHttpRequest=window.__request,e(n))}.bind(this)}}}))}async function uninject(){window.XMLHttpRequest=window.__request,window.removeEventListener("mousemove",divMove,!0),document.getElementById("header").removeEventListener("mousedown",mouseDown,!1),window.removeEventListener("mouseup",mouseUp,!1),document.getElementById("mainWindow").remove(),inject=null,createElement=null,fetchInvites=null,checkTheInfo=null,deleteInvites=null,console.log("Goodbye!")}console.log("Hello!");
+(async function () {
+    let outputCreate, token;
+
+    function injectUI() {
+        const html = `
+            <div id="mainWindow" style="position: absolute; top: 100px; left: 100px; z-index: 9999; padding: 10px; background: #2F3136; color: #fff; border: 1px solid #3f4147; border-radius: 8px; font-family: sans-serif; text-align: center;">
+                <b>Discord Friend Invites</b>
+                <button id="createInvite" style="display: block; margin: 10px auto; padding: 5px 10px; background: #5865f2; color: white; border: none; border-radius: 4px;">Create Invite</button>
+                <div id="outputCreate" style="margin-top: 10px; padding: 5px; background: #1e1f22; border-radius: 4px; cursor: text;">Output will appear here...</div>
+                <button id="closeBtn" style="margin-top: 10px; background: #f04747; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Close</button>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', html);
+
+        document.getElementById('createInvite').addEventListener('click', createInvite);
+        document.getElementById('closeBtn').addEventListener('click', () => {
+            document.getElementById('mainWindow').remove();
+        });
+        outputCreate = document.getElementById('outputCreate');
+    }
+
+    async function getToken() {
+        return new Promise((resolve) => {
+            outputCreate.textContent = "Switch to a Discord channel to grab the token!";
+            const interceptor = XMLHttpRequest.prototype.setRequestHeader;
+            XMLHttpRequest.prototype.setRequestHeader = function (header, value) {
+                if (header === "Authorization") {
+                    XMLHttpRequest.prototype.setRequestHeader = interceptor;
+                    resolve(value);
+                }
+                interceptor.apply(this, arguments);
+            };
+        });
+    }
+
+    async function createInvite() {
+        outputCreate.textContent = "Creating invite...";
+
+        if (!token) {
+            token = await getToken();
+            console.log("Token fetched:", token);
+        }
+
+        const body = {
+            max_age: 0,  // Never expires
+            max_uses: 0  // Unlimited uses
+        };
+
+        try {
+            const response = await fetch("https://discord.com/api/v9/users/@me/invites", {
+                credentials: "include",
+                headers: {
+                    "Authorization": token,
+                    "Content-Type": "application/json"
+                },
+                method: "POST",
+                body: JSON.stringify(body)
+            });
+            const result = await response.json();
+            if (result.code) {
+                const inviteLink = `https://discord.gg/${result.code}`;
+                outputCreate.textContent = `Invite created: ${inviteLink}`;
+                console.log("Invite Link:", inviteLink);
+            } else {
+                throw new Error(result.message || "Unknown error");
+            }
+        } catch (error) {
+            console.error("Failed to create invite:", error);
+            outputCreate.textContent = `Error: ${error.message}`;
+        }
+    }
+
+    injectUI();
+    console.log("Discord Friend Invites: Ready to use!");
+})();
+
 ```
 <sup>(or copy it from <a href="https://github.com/woodendoors7/DiscordFriendInvites/blob/main/inject.js">inject.js</a>)</sup>
 
